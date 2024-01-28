@@ -72,7 +72,16 @@
         //  berilgan aftor ni  kitoblar sonini return qiling
         public int getAvailableBookByAuthor(string author)
         {
-            return 0;
+            int count = 0;
+            foreach (var item in bookList)
+            {
+                if(item!=null && item.Author.Equals(author))
+                {
+                    count += item.count;
+                }
+            }
+
+            return count;
         }
 
         public Student addStudent(string name, string surname, string phone, int level)
