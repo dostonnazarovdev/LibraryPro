@@ -61,7 +61,12 @@
         // shu  kitobdan nechta borligini return qiling
         public int getAvailableBook(string title)
         {
-            return 0;
+            Book book = getBookByTitle(title);
+            if (book == null) 
+            {
+                return -1; 
+            }
+            return book.count;
         }
 
         //  berilgan aftor ni  kitoblar sonini return qiling
