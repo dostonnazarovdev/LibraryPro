@@ -11,6 +11,7 @@
             if (exist != null)
             {
                 Console.WriteLine("Sorry book's title does not uniqe!");
+                return;
             }
             bookList.Add(book);
         }
@@ -31,26 +32,29 @@
         // aftorni barcha kitoblarini qaytaring
         public List<Book> getAuthorBooks(string author)
         {
+            List<Book> authorBookList = new List<Book>();
             foreach (var book in bookList)
             {
                 if (book != null && book.Author == author)
                 {
-                    return bookList;
+                    authorBookList.Add(book);
                 }
             }
-            return null;
+            return authorBookList;
         }
 
         // bor kitoblar sonini son qo'shish agar kitob bo'lmasa -1 return qiling.
         // agar  bo'lsa  uni sonini ko'paytirib xosil bo'lgan sonni return qiling
         public int addAvailableBook(string title, int count)
         {
-            Book exist = getBookByTitle(title);
-            if (exist == null)
+            Book book = getBookByTitle(title);
+            if (book == null)
             {
                 return -1;
             }
-            return count++;
+
+            book.addBookCount(count);
+            return book.count;
 
         }
 

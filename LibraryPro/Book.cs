@@ -18,7 +18,10 @@ namespace LibraryPro
         public string Title { get; set; }
         public string Author { get; set; }
         public DateTime PublishYear { get; set; }
-
-
+        public int count = 1;
+        public void addBookCount(int count)
+        {
+            this.count += count;
+        }
     }
 }
