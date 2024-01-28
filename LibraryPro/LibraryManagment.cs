@@ -31,6 +31,13 @@
         // aftorni barcha kitoblarini qaytaring
         public List<Book> getAuthorBooks(string author)
         {
+            foreach (var book in bookList)
+            {
+                if(book!=null && book.Author == author)
+                {
+                    return bookList;
+                }
+            }
             return null;
         }
 
