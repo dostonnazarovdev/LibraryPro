@@ -1,22 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LibraryPro
+﻿namespace LibraryPro
 {
     public class LibraryManagment
     {
+        private List<Book> bookList = new List<Book>();
         // kitob kiritish
-        public void addNewBook(string title, string author, int publishYear)
+        public void addNewBook(string title, string author, DateTime publishYear)
         {
-
+            Book book = new Book(title, author, publishYear);
+            Book exist = getBookByTitle(title);
+            if (exist != null)
+            {
+                Console.WriteLine("Sorry book's title does not uniqe!");
+            }
+            bookList.Add(book);
         }
 
         // nomi bo'yicha kitobbi qaytaring
         public Book getBookByTitle(string title)
         {
+            foreach (var book in bookList)
+            {
+                if (book != null && book.Title == title)
+                {
+                    return book;
+                }
+            }
             return null;
         }
 
