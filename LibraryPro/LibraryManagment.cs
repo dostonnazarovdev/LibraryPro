@@ -3,10 +3,12 @@
     public class LibraryManagment
     {
         private List<Book> bookList = new List<Book>();
+        private List<Student> studenetList = new List<Student>();
+        int generalId = 1;
         // kitob kiritish
         public void addNewBook(string title, string author, DateTime publishYear)
         {
-            Book book = new Book(title, author, publishYear);
+            Book book = new Book(generalId++,title, author, publishYear);
             Book exist = getBookByTitle(title);
             if (exist != null)
             {
@@ -86,7 +88,25 @@
 
         public Student addStudent(string name, string surname, string phone, int level)
         {
+            Student student = new Student(generalId++,name,surname,phone,level);
+            Student exest = getStudentByName(name);
+            if(exest != null)
+            {
+                return null;
+            }
+            studenetList.Add(student);
+            return student;  
+        }
 
+         private Student getStudentByName(string name)
+        {
+            foreach (var item in studenetList)
+            {
+                if(item!=null && item.Name == name)
+                {
+                    return item;
+                }
+            }
             return null;
         }
 
