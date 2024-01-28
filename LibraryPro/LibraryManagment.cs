@@ -33,7 +33,7 @@
         {
             foreach (var book in bookList)
             {
-                if(book!=null && book.Author == author)
+                if (book != null && book.Author == author)
                 {
                     return bookList;
                 }
@@ -45,7 +45,13 @@
         // agar  bo'lsa  uni sonini ko'paytirib xosil bo'lgan sonni return qiling
         public int addAvailableBook(string title, int count)
         {
-            return 0;
+            Book exist = getBookByTitle(title);
+            if (exist == null)
+            {
+                return -1;
+            }
+            return count++;
+
         }
 
         // shu  kitobdan nechta borligini return qiling
